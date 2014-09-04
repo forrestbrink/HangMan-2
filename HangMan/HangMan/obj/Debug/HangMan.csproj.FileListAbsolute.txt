@@ -1,0 +1,6 @@
+C:\Konstantin\HangMan-2\HangMan\HangMan\bin\Debug\HangMan.exe.config
+C:\Konstantin\HangMan-2\HangMan\HangMan\bin\Debug\HangMan.exe
+C:\Konstantin\HangMan-2\HangMan\HangMan\bin\Debug\HangMan.pdb
+C:\Konstantin\HangMan-2\HangMan\HangMan\obj\Debug\HangMan.csprojResolveAssemblyReference.cache
+C:\Konstantin\HangMan-2\HangMan\HangMan\obj\Debug\HangMan.exe
+C:\Konstantin\HangMan-2\HangMan\HangMan\obj\Debug\HangMan.pdb
