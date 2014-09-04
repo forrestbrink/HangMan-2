@@ -13,7 +13,8 @@ namespace HangMan
             // Declare variables
             List<string> letters = new List<string>(); //list of wrong letters
             List<string> wrongWords = new List<string>(); //list of wrong words
-            int guesses = 10; // number of guesses
+            int guesses = 7; // number of guesses
+            string message = "";
             string word = string.Empty;
             string hiddenWord = string.Empty;
             string [] words = new string[] {"banana", "apple", "orange","grape","pear","grapefruit","peach","watermelon", 
@@ -32,8 +33,12 @@ namespace HangMan
                 word += "_";
             }
 
+           // printDeadMan(7);
             while (hiddenWord!=word && guesses>0)  //until we guess the word or use all guesses
             {
+                Console.Clear();
+                printDeadMan(guesses);
+                Console.WriteLine(message);
                 PrintLettersAndWords(letters, wrongWords, word); // print our word, print lists of wrong letters and words
                 Console.WriteLine("Enter word or letter");
                 string input = Console.ReadLine().ToLower();  //Take input from user
@@ -48,7 +53,7 @@ namespace HangMan
                     {
                         wrongWords.Add(input); // if word is wrong - add it to wrongwords list
                         guesses--;
-                        Console.WriteLine("Word is wrong, you have " + guesses + " guesses left, try to guess letters first");
+                        message = "Word is wrong, you have " + guesses + " guesses left, try to guess letters first";
                     }
                 }
                 else //or input is letter
@@ -56,7 +61,7 @@ namespace HangMan
                     if (hiddenWord.Contains(input))
                     {
                         word = ChangeWord(input, word, hiddenWord); // if we got the rigth letter - add it to our word
-                        Console.WriteLine("Correct! Keep going. You still have " + guesses + " guesses left" );
+                        message = "Correct! Keep going. You still have " + guesses + " guesses left";
                         letters.Add(input); 
                     }
                     else
@@ -68,28 +73,36 @@ namespace HangMan
                         }
                         if (isExist)
                         {
-                            Console.WriteLine("You already guessed letter \"" + input + "\"");
+                            message = "You already guessed letter \"" + input + "\"";
 
                         }
                         else
                         {
                             letters.Add(input); // if word is wrong - add it to wrongletters list
                             guesses--;
-                            Console.WriteLine("Letter is wrong, you have " + guesses + " guesses left");
+                            message = "Letter is wrong, you have " + guesses + " guesses left";
                         }
                         
                        
                     }
                 }
+
+                
             }
 
             // In the end of while loop we check the reason why we left the loop
             if (hiddenWord == word)
             {
+                Console.Clear();
                 Console.WriteLine("YOU WIN! The word is " + word);
+                printHappyMan();
             }
             else // we have no guesses left
+            {
+                Console.Clear();
                 Console.WriteLine("YOU LOSE! The word was " + hiddenWord);
+            printDeadMan(0);
+            }
            
             
             // Final code, ask user if userr wanna play again
@@ -101,6 +114,8 @@ namespace HangMan
                 HangMan(); 
             }
         }
+
+      
 
         // Chnages the word with already guessed letters
         static string ChangeWord(string letter, string word, string hiddenWord)
@@ -155,6 +170,115 @@ namespace HangMan
             
             HangMan();
             
+        }
+
+        static void printHappyMan()
+        {
+
+            Console.WriteLine();
+            Console.WriteLine("           ");
+            Console.WriteLine("                   ");
+            Console.WriteLine("                  \\O/");
+            Console.WriteLine("                   |");
+            Console.WriteLine("                   |");
+            Console.WriteLine("                  / \\");
+            Console.WriteLine("          ");
+        }
+        static void printDeadMan(int guesses)
+        {
+            switch (guesses)
+            {
+
+                case 7: Console.WriteLine();
+                    Console.WriteLine("           _________");
+                    Console.WriteLine("          |        |");
+                    Console.WriteLine("          |        ");
+                    Console.WriteLine("          |       ");
+                    Console.WriteLine("          |        ");
+                    Console.WriteLine("          |       ");
+                    Console.WriteLine("          |");
+                        break;
+
+
+                case 6: Console.WriteLine();
+                        Console.WriteLine("           _________");
+                        Console.WriteLine("          |        |");
+                        Console.WriteLine("          |        O");
+                        Console.WriteLine("          |       ");
+                        Console.WriteLine("          |        ");
+                        Console.WriteLine("          |       ");
+                        Console.WriteLine("          |");
+                        break;
+
+
+                case 5: Console.WriteLine();
+                        Console.WriteLine("           _________");
+                        Console.WriteLine("          |        |");
+                        Console.WriteLine("          |        O");
+                        Console.WriteLine("          |        |");
+                        Console.WriteLine("          |        ");
+                        Console.WriteLine("          |       ");
+                        Console.WriteLine("          |");
+                        break;
+
+
+                case 4: Console.WriteLine();
+                        Console.WriteLine("           _________");
+                        Console.WriteLine("          |        |");
+                        Console.WriteLine("          |        O");
+                        Console.WriteLine("          |       /|");
+                        Console.WriteLine("          |       ");
+                        Console.WriteLine("          |       ");
+                        Console.WriteLine("          |");
+                        break;
+
+
+                case 3: Console.WriteLine();
+                        Console.WriteLine("           _________");
+                        Console.WriteLine("          |        |");
+                        Console.WriteLine("          |        O");
+                        Console.WriteLine("          |       /|\\");
+                        Console.WriteLine("          |        ");
+                        Console.WriteLine("          |       ");
+                        Console.WriteLine("          |");
+                        break;
+
+
+                case 2: Console.WriteLine();
+                        Console.WriteLine("           _________");
+                        Console.WriteLine("          |        |");
+                        Console.WriteLine("          |        O");
+                        Console.WriteLine("          |       /|\\");
+                        Console.WriteLine("          |        |");
+                        Console.WriteLine("          |       ");
+                        Console.WriteLine("          |");
+                        break;
+
+
+                case 1: Console.WriteLine();
+                        Console.WriteLine("           _________");
+                        Console.WriteLine("          |        |");
+                        Console.WriteLine("          |        O");
+                        Console.WriteLine("          |       /|\\");
+                        Console.WriteLine("          |        |");
+                        Console.WriteLine("          |       / ");
+                        Console.WriteLine("          |");
+                        break;
+
+
+                case 0: Console.WriteLine();
+                        Console.WriteLine("           _________");
+                        Console.WriteLine("          |        |");
+                        Console.WriteLine("          |        O");
+                        Console.WriteLine("          |       /|\\");
+                        Console.WriteLine("          |        |");
+                        Console.WriteLine("          |       / \\");
+                        Console.WriteLine("          |");
+                        break;
+
+                default: break;
+              
+            }
         }
     }
 }
