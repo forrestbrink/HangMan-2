@@ -17,7 +17,12 @@ namespace HangMan
             string word = string.Empty;
             string hiddenWord = string.Empty;
             string [] words = new string[] {"banana", "apple", "orange","grape","pear","grapefruit","peach","watermelon", 
-                                             "plum","pineapple", "apricot","lemon","lime","mango", "papaya","kiwi","cantaloupe","nectarine"};  //word Bank
+                                             "plum","pineapple", "apricot","lemon","lime","mango", "papaya","kiwi","cantaloupe",
+                                             "nectarine","avocado","breadfruit","bilberry","blackberry","blueberry","boysenberry",
+                                              "currant","cherry","cherimoya","cloudberry","coconut","cranberry","cucumber","damson",
+                                              "date","dragonfruit","durian","eggplant","elderberry","feijoa","fig","gooseberry",
+                                               "guava","huckleberry","jackfruit","lychee","honeydew","nut","olive","clementine",
+                                               "mandarine", "tangarine","passionfruit","pomegranate","rasberry","tomato"};  //word Bank
             Random rnd = new Random();
             hiddenWord = words[rnd.Next(1,words.Length+1)-1];
 
@@ -46,18 +51,33 @@ namespace HangMan
                         Console.WriteLine("Word is wrong, you have " + guesses + " guesses left, try to guess letters first");
                     }
                 }
-                else //or inout is letter
+                else //or input is letter
                 {
                     if (hiddenWord.Contains(input))
                     {
                         word = ChangeWord(input, word, hiddenWord); // if we got the rigth letter - add it to our word
                         Console.WriteLine("Correct! Keep going. You still have " + guesses + " guesses left" );
+                        letters.Add(input); 
                     }
                     else
                     {
-                        letters.Add(input); // if word is wrong - add it to wrongletters list
-                        guesses--;
-                        Console.WriteLine("Letter is wrong, you have " + guesses + " guesses left");
+                        bool isExist = false;
+                        foreach (var item in letters)
+                        {
+                            if (item == input) isExist = true;
+                        }
+                        if (isExist)
+                        {
+                            Console.WriteLine("You already guessed letter \"" + input + "\"");
+
+                        }
+                        else
+                        {
+                            letters.Add(input); // if word is wrong - add it to wrongletters list
+                            guesses--;
+                            Console.WriteLine("Letter is wrong, you have " + guesses + " guesses left");
+                        }
+                        
                        
                     }
                 }
