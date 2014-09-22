@@ -10,6 +10,10 @@ namespace HangMan
     {
         static void HangMan()
         {
+            Console.WriteLine("What is your name?");
+            string username = Console.ReadLine();
+            Console.WriteLine("Welcome, " + username);
+            Console.WriteLine("You will be guessing letters or the word until you get it correct");
             // Declare variables
             List<string> letters = new List<string>(); //list of wrong letters
             List<string> wrongWords = new List<string>(); //list of wrong words
@@ -96,6 +100,25 @@ namespace HangMan
                 Console.Clear();
                 Console.WriteLine("YOU WIN! The word is " + word);
                 printHappyMan();
+
+                KonstantinEntities db = new KonstantinEntities();
+                HighScores hs = new HighScores();
+                hs.Date = DateTime.Now;
+                hs.Score = 7 - guesses + hiddenWord.Length;
+                hs.Game = "HangMan";
+                if (username == "") username = "Anonymous";
+                hs.Name = username;
+                db.HighScores.Add(hs);
+                db.SaveChanges();
+
+
+                var list = db.HighScores.Where(x => x.Game == "HangMan");
+                Console.WriteLine("********** High Scores *************");
+                foreach (var item in list)
+                { Console.WriteLine(item.Name + " - " + item.Score); }
+
+
+
             }
             else // we have no guesses left
             {
@@ -163,10 +186,7 @@ namespace HangMan
 
         static void Main(string[] args)
         {
-            Console.WriteLine("What is your name?");
-            string username = Console.ReadLine();
-            Console.WriteLine("Welcome, " + username);
-            Console.WriteLine("You will be guessing letters or the word until you get it correct");
+
             
             HangMan();
             

@@ -4,3 +4,11 @@ C:\Konstantin\HangMan-2\HangMan\HangMan\bin\Debug\HangMan.pdb
 C:\Konstantin\HangMan-2\HangMan\HangMan\obj\Debug\HangMan.csprojResolveAssemblyReference.cache
 C:\Konstantin\HangMan-2\HangMan\HangMan\obj\Debug\HangMan.exe
 C:\Konstantin\HangMan-2\HangMan\HangMan\obj\Debug\HangMan.pdb
+D:\Seed Paths\HangMan-2\HangMan\HangMan\bin\Debug\HangMan.exe.config
+D:\Seed Paths\HangMan-2\HangMan\HangMan\obj\Debug\HangMan.exe
+D:\Seed Paths\HangMan-2\HangMan\HangMan\obj\Debug\HangMan.pdb
+D:\Seed Paths\HangMan-2\HangMan\HangMan\bin\Debug\HangMan.exe
+D:\Seed Paths\HangMan-2\HangMan\HangMan\bin\Debug\HangMan.pdb
+D:\Seed Paths\HangMan-2\HangMan\HangMan\bin\Debug\EntityFramework.dll
+D:\Seed Paths\HangMan-2\HangMan\HangMan\bin\Debug\EntityFramework.xml
+D:\Seed Paths\HangMan-2\HangMan\HangMan\obj\Debug\HangMan.csprojResolveAssemblyReference.cache
